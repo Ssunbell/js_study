@@ -1,3 +1,26 @@
+# 공부합시다(Java Script)
+<img src="https://user-images.githubusercontent.com/97590480/173601024-8488d1ac-20ba-4688-80c8-0f044bcb50cc.png">
+
+## ✅ rule
+자바 스크립트를 작성한 뒤 md 파일로 저장해줍니다.
+
+### ✅ 깃헙 Push/Pull 규칙
+
+1. 무조건 __pull__ 먼저 해줍니다. pull을 해서 해당 주차의 디렉토리가 생기지 않는다면 따로 만들어주세요
+
+```
+$ git pull <remote 이름> <브랜치이름>
+$ git pull js_study master
+```
+
+2. 파일 업로드 규칙에 맞게 push해주세요.
+```
+$ git add .
+$ git commit -m "2022-06-14_유선종.md"
+$ git push <remote 이름> master
+```
+
+
 ### 💕 원격 저장소 등록하기
 
 `git remote add <원격저장소 이름> <주소>` 형식으로 작성합니다.
