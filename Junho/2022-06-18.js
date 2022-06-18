@@ -22,3 +22,38 @@ function calculator(){
 }
 
 document.write(calculator())
+
+var seasons = ['spring','summer']
+document.write(seasons[0])
+
+if(1==2){
+    document.write('\nhi\n'.replace('\n',"<br>"))
+}
+else{
+    document.write('\nhi?\n'.replace('\n',"<br>"))
+}
+
+
+function insert_number(){
+    var num = prompt('숫자를 입력하세요;;')
+    if(num < 5){
+        document.write('\n',num,'은/는 5보다 작습니다.\n'.replace('\n',"<br>"))
+    }
+    else{
+        document.write('\n',num,'은/는 5보다 큽니다.\n'.replace('\n',"<br>"))
+    }
+}
+
+function null_test(){
+    var sample = prompt('null?')
+    if(sample == null){
+        document.write('yes it is null')
+        alert('select cancle.')
+    }
+    else if(sample == ''){
+        document.write('no it is blank')
+    }
+    else{
+        document.write('hi?',sample)
+    }
+}
