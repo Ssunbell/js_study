@@ -93,14 +93,14 @@ console.log(a + b);
 console.log(a * b);
 console.log(a / b);
 console.log("hello " + myName);
-   ```
+```
  
 - **let**:  바꿀 수 있는 값
     - 새로운 값으로 업데이트 ⭕
     - 새로운 변수를 생성할 때 한 번만 사용
 
 
-   ```javascript
+```javascript
 let a = 5;
 let b = 2;
 let myName = "name";
@@ -113,7 +113,7 @@ console.log("hello " + myName);
 myName = "name1";  // const일 경우, 오류 발생
 
 console.log("your new name is " + myName);
-   ```
+```
 
 - **var**: 바꿀 수 있는 값
     - 값을 보호할 수 없음
@@ -180,9 +180,6 @@ const nonsense = [1, 2, "hello", false, null, true, undefined, "name"];
 
 console.log(daysOfWeek, nonsense);
 ```
-
-
-![image-20220619172901.png](week01.assets/image-20220619172901.png)
 
 
 ```javascript
