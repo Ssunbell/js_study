@@ -78,11 +78,12 @@ console.log(5 / 2);
 
 ![5574a506696642fe7d66be5c65c2e31e.png](week01.assets/5574a506696642fe7d66be5c65c2e31e.png)
 
-- `const`: (constant) 바꿀 수 없는 값
+- **const**: (constant) 바꿀 수 없는 값
     - 새로운 값으로 업데이트할 경우 ➡ 오류 발생
     - ⭐변수를 선언할 때 기본적으로 `const` 사용
     - ⭐변수 이름에 공백이 필요한 경우 ➡ 다음 단어의 첫 문자를 대문자로
-   ```javascript
+  
+```javascript
 const a = 5;
 const b = 2;
 const myName = "name";
@@ -94,7 +95,7 @@ console.log(a / b);
 console.log("hello " + myName);
    ```
  
-- `let`:  바꿀 수 있는 값
+- **let**:  바꿀 수 있는 값
     - 새로운 값으로 업데이트 ⭕
     - 새로운 변수를 생성할 때 한 번만 사용
    ```javascript
@@ -112,14 +113,14 @@ myName = "name1";  // const일 경우, 오류 발생
 console.log("your new name is " + myName);
    ```
 
-- `var`: 바꿀 수 있는 값
+- **var**: 바꿀 수 있는 값
     - 값을 보호할 수 없음
     - ⭐절대 사용 ❌
     
     
 ##### Booleans
 
-- `true`, `false` 
+- **true**, **false** 
     - ex) 사용자 로그인 여부, 비디오 재생 여부, 웹 사이트 로딩 여부
 
 ```javascript
@@ -127,14 +128,14 @@ const amIFat = false;
 console.log(amIFat)
 ``` 
 
-- `null`: 아무것도 아닌 값
+- **null**: 아무것도 아닌 값
 
 ```javascript
 const amIFat = null;
 console.log(amIFat);
 ``` 
 
-- `undefined`: 값이 존재하지 않음
+- **undefined**: 값이 존재하지 않음
 
 ```javascript
 const amIFat = null;
