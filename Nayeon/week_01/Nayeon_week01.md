@@ -1,8 +1,8 @@
 # 자바스크립트 스터디 1주차
 
 > 2022/06/13 ~ 2022/06/19
--  작성자: 김나연
 
+- 작성자: 김나연
 - source: [바닐라 JS로 크롬 앱 만들기](https://nomadcoders.co/javascript-for-beginners/lobby?utm_source=free_course&utm_campaign=javascript-for-beginners&utm_medium=site)
 
 `Javascript` `HTML` `CSS` `VSCode`
@@ -82,7 +82,7 @@ console.log(5 / 2);
     - 새로운 값으로 업데이트할 경우 ➡ 오류 발생
     - ⭐변수를 선언할 때 기본적으로 `const` 사용
     - ⭐변수 이름에 공백이 필요한 경우 ➡ 다음 단어의 첫 문자를 대문자로
-  
+
 ```javascript
 const a = 5;
 const b = 2;
@@ -94,7 +94,7 @@ console.log(a * b);
 console.log(a / b);
 console.log("hello " + myName);
 ```
- 
+
 - **let**:  바꿀 수 있는 값
     - 새로운 값으로 업데이트 ⭕
     - 새로운 변수를 생성할 때 한 번만 사용
@@ -124,29 +124,34 @@ console.log("your new name is " + myName);
 
 - **true**, **false** 
     - ex) 사용자 로그인 여부, 비디오 재생 여부, 웹 사이트 로딩 여부
-
-```javascript
-const amIFat = false;
-console.log(amIFat)
-``` 
+    
+    ```javascript
+    const amIFat = false;
+    console.log(amIFat)
+    ```
 
 - **null**: 아무것도 아닌 값
 
-```javascript
-const amIFat = null;
-console.log(amIFat);
-``` 
+  ```javascript
+  const amIFat = null;
+  console.log(amIFat);
+  ```
 
 - **undefined**: 값이 존재하지 않음
 
-```javascript
-const amIFat = null;
-let something;
-console.log(amIFat);
-console.log(something);  // undefined
-``` 
+  ```javascript
+  const amIFat = null;
+  let something;
+  console.log(amIFat);
+  console.log(something);  // undefined
+  ```
+
+
 
 ##### Arrays
+
+- **array**: 무언가를 나열하고 싶을 때 사용 (그룹화)
+  - ex) to-do list
 
 ```javascript
 const mon = "mon";
@@ -161,9 +166,6 @@ const daysOfWeek = mon + tue + wed + thu + fri + sat + sun;
 
 console.log(daysOfWeek)  // montuewedthufrisatsun: string
 ```
-
-- **array**: 무언가를 나열하고 싶을 때 사용 (그룹화)
-    - ex) to-do list
 
 ```javascript
 const mon = "mon";
@@ -181,6 +183,8 @@ const nonsense = [1, 2, "hello", false, null, true, undefined, "name"];
 console.log(daysOfWeek, nonsense);
 ```
 
+![image-20220619174001](week01.assets\image-20220619174001.png)
+
 
 ```javascript
 const daysOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat"];
@@ -196,6 +200,8 @@ daysOfWeek.push("sun");
 console.log(daysOfWeek);  
 ```
 ![image-20220619174001.png](week01.assets/image-20220619174001.png)
+
+
 
 ##### Objects
 
