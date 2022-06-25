@@ -1,5 +1,5 @@
 <!-- <script>var name = prompt('이름')</script> -->
-<script src="2022-06-23.js"></script>
+
 
 <!-- src로 함수호출한 후에 다음 스크립트 공간에서 호출 -->
 <script>
@@ -16,12 +16,35 @@
     // check_function04(2,3)
 
     // 2022-06-23
-    check_function01()
-    
+    // check_function01()
+
 </script>
-<body>
+
+<!-- <body>
+    2022-06-23 : event
     <button onclick="addNumber(2,3)">두수의 덧셈</button>
     <button onclick="check_function02()">두수의 덧셈</button>
 
-</body>
+</body> -->
  
+<div id='item'>
+    <img src="src/cat.png" alt="">
+    <button class="over" id="open" onclick="show_detail()">상세 설명 보기</button>
+
+    <div id="desc" class="detail">
+        <button id="close" onclick="hide_detail()">상세 설명 닫기</button>
+        <h4>고양이</h4>
+        <p>집앞 길냥이</p>
+        
+    </div>
+</div>
+
+
+<img src="src/cat.png" alt="" id="cover">
+
+<script src="2022-06-25.js"></script>
+<script>
+    check_function01()
+    check_function02()
+</script>
+
