@@ -30,3 +30,8 @@ function check_function03(){
         console.log('</br>')
     }
 }
+
+function check_function04(a,b){
+    var sum = a+b;
+    console.log(sum)
+}
