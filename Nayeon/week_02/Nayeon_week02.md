@@ -47,7 +47,7 @@ sayHello("name02", 20);
 sayHello("name03", 30);
 ```
 
-![](week02.assets\image-20220621223346113.png)
+![](week02.assets/image-20220621223346113.png)
 
 
 
@@ -76,7 +76,7 @@ console.log(player.name);
 player.sayHello("name02");
 ```
 
-![image-20220621224544037](week02.assets\image-20220621224544037.png)
+![image-20220621224544037](week02.assets/image-20220621224544037.png)
 
 
 
@@ -145,7 +145,7 @@ const divideResult = calculator.divide(timesResult, plusResult);
 const powerResult = calculator.power(divideResult, minusResult);
 ```
 
-![image-20220626004612493](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626004612493.png)
+![image-20220626004612493](week02.assets/image-20220626004612493.png)
 
 
 
@@ -157,9 +157,9 @@ const age = prompt("How old are you?");
 console.log(typeof age, typeof parseInt(age));  
 ```
 
-![image-20220626155144813](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626155144813.png)
+![image-20220626155144813](week02.assets/image-20220626155144813.png)
 
-![image-20220626155930308](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626155930308.png)
+![image-20220626155930308](week02.assets/image-20220626155930308.png)
 
 
 
@@ -189,7 +189,7 @@ if (isNaN(age)) {
 }
 ```
 
-![image-20220626160943837](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626160943837.png)
+![image-20220626160943837](week02.assets/image-20220626160943837.png)
 
 
 
@@ -209,7 +209,7 @@ if (isNaN(age) || age < 0) {
 }
 ```
 
-![image-20220626161715936](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626161715936.png)
+![image-20220626161715936](week02.assets/image-20220626161715936.png)
 
 
 
@@ -229,17 +229,17 @@ if (isNaN(age) || age < 0) {
 
 
 
-![image-20220626164210455](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626164210455.png)
+![image-20220626164210455](week02.assets/image-20220626164210455.png)
 
-![image-20220626164401030](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626164401030.png)
+![image-20220626164401030](week02.assets/image-20220626164401030.png)
 
-![image-20220626164603991](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626164603991.png)
+![image-20220626164603991](week02.assets/image-20220626164603991.png)
 
 
 
 ##### HTML in JavaScript
 
-![image-20220626165653905](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626165653905.png)
+![image-20220626165653905](week02.assets/image-20220626165653905.png)
 
 
 
@@ -249,7 +249,7 @@ const title = document.getElementById("title");
 title.innerText = "Got you!";
 ```
 
-![image-20220626170754492](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626170754492.png)
+![image-20220626170754492](week02.assets/image-20220626170754492.png)
 
 
 
@@ -282,7 +282,7 @@ const hellos = document.getElementsByClassName("hello");
 console.log(hellos);
 ```
 
-![image-20220626171802980](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626171802980.png)
+![image-20220626171802980](week02.assets/image-20220626171802980.png)
 
 
 
@@ -311,7 +311,7 @@ const title = document.getElementsByTagName("h1");
 console.log(title);
 ```
 
-![image-20220626172145021](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626172145021.png)
+![image-20220626172145021](week02.assets/image-20220626172145021.png)
 
 
 
@@ -324,7 +324,7 @@ const title = document.querySelector(".hello h1");
 console.log(title);
 ```
 
-![image-20220626172431481](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626172431481.png)
+![image-20220626172431481](week02.assets/image-20220626172431481.png)
 
 
 
@@ -353,7 +353,7 @@ console.log(title);
 </html>
 ```
 
-![image-20220626172731208](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626172731208.png)
+![image-20220626172731208](week02.assets/image-20220626172731208.png)
 
 
 
@@ -365,4 +365,4 @@ const title = document.querySelectorAll(".hello h1");
 console.log(title);
 ```
 
-![image-20220626173007577](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626173007577.png)
+![image-20220626173007577](week02.assets/image-20220626173007577.png)
