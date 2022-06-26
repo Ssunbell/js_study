@@ -365,3 +365,4 @@ const title = document.querySelectorAll(".hello h1");
 console.log(title);
 ```
 
+![image-20220626173007577](C:\Users\NY\JS_study\Nayeon\week_02\week02.assets\image-20220626173007577.png)
