@@ -5,11 +5,11 @@
 - 작성자: 김나연
 - source: [바닐라 JS로 크롬 앱 만들기](https://nomadcoders.co/javascript-for-beginners/lobby?utm_source=free_course&utm_campaign=javascript-for-beginners&utm_medium=site)
 
-`Javascript` `HTML` `CSS` `VSCode`
+`JavaScript` `HTML` `CSS` `VSCode`
 
 
 
-## Welcome to Javascript
+## Welcome to JavaScript
 
 - 브라우저 `inspect/Console`에서 사용 가능
 
