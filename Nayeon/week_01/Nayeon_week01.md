@@ -3,7 +3,7 @@
 > 2022/06/13 ~ 2022/06/19
 
 - 작성자: 김나연
-- source: [바닐라 JS로 크롬 앱 만들기](https://nomadcoders.co/javascript-for-beginners/lobby?utm_source=free_course&utm_campaign=javascript-for-beginners&utm_medium=site)
+- source: [바닐라 JS로 크롬 앱 만들기](https://nomadcoders.co/javascript-for-beginners)
 
 `JavaScript` `HTML` `CSS` `VSCode`
 
