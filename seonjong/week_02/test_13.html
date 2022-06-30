@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const a = prompt('첫 번째 숫자를 입력해주세요.')
+        const b = prompt('두 번째 숫자를 입력해주세요.')
+        // prompt는 문자열을 반환하므로 10 + 20을 할 경우 1020의 결과가 나옴
+        alert(`${a} + ${b} = ${a + b}`)
+        
+        let c = prompt('첫 번째 숫자를 입력해주세요.')
+        c = Number(c)
+        let d = prompt('두 번째 숫자를 입력해주세요.')
+        d = Number(d)
+        alert(`${c} + ${d} = ${c + d}`) // 10 + 20 = 30
+
+        const e = Number(prompt('첫 번째 숫자를 입력해주세요.'))
+        const f = Number(prompt('두 번째 숫자를 입력해주세요.'))
+        alert(`${e} + ${f} = ${e + f}`) // 10 + 20 = 30
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

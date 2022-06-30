@@ -1,5 +1,5 @@
 # 공부합시다(Java Script)
-<img src="https://user-images.githubusercontent.com/97590480/173603410-fcaa0eb1-6c30-465f-a8f7-d501d4653491.gif">
+<img src="https://user-images.githubusercontent.com/97590480/176723447-02939e7c-79f9-4ee1-8873-7f3499ede33f.png">
 
 ## ✅ rule
 자바 스크립트를 작성한 뒤 md 파일로 저장해줍니다.
