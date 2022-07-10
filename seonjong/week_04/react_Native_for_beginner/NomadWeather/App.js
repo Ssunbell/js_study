@@ -1,14 +1,35 @@
-import React from "react";
+import * as Location from 'expo-location'
+import React, {useEffect, useState} from "react";
 import reactDom from "react-dom";
 import { View, Text, StyleSheet, ScrollView, Dimensions } from "react-native";
 
 export default function App() {
+  const [city, setCity] = useState('Loading...')
+  const [location, setLocation] = useState()
+  const [ok, setOk] = useState(true)
+  const ask = async() => {
+    const {granted} = await Location.requestForegroundPermissionsAsync()
+    if (!granted){
+      setOk(false)
+    }
+    const {coords:{latitude, longitude}} = await Location.getCurrentPositionAsync({accuracy: 5})
+    const location = await Location.reverseGeocodeAsync({latitude, longitude}, {useGoogleMaps:false})
+    setCity(location[0].city)
+  }
+  useEffect(() => {
+    ask()
+  },[])
   return (
     <View style={styles.container}>
       <View style={styles.city}>
-        <Text style={styles.cityName}>Seoul</Text>
+        <Text style={styles.cityName}>{city}</Text>
       </View>
-      <ScrollView pagingEnabled horizontal contentContainerStyle={styles.weather}>
+      <ScrollView
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        horizontal
+        contentContainerStyle={styles.weather}
+      >
         <View style={styles.day}>
           <Text style={styles.temp}>27</Text>
           <Text style={styles.decription}>Sunny</Text>
@@ -34,7 +55,7 @@ export default function App() {
   );
 }
 
-const {width: ScreenWidth} = Dimensions.get("window")
+const { width: ScreenWidth } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
@@ -50,10 +71,9 @@ const styles = StyleSheet.create({
     fontSize: 68,
     fontWeight: "500",
   },
-  weather: {
-  },
+  weather: {},
   day: {
-    width:ScreenWidth,
+    width: ScreenWidth,
     alignItems: "center",
   },
   temp: {
@@ -61,7 +81,7 @@ const styles = StyleSheet.create({
     fontSize: 178,
   },
   decription: {
-    marginTop:-30,
+    marginTop: -30,
     fontSize: 60,
   },
 });
