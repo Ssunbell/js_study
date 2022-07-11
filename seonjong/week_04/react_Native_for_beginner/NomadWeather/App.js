@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import reactDom from "react-dom";
 import { View, Text, StyleSheet, ScrollView, Dimensions } from "react-native";
 
-const API_key = 'e5576b232d9e55067c99bc21e75f387d' // 어플에 두면 보안에 취약함
+const API_key = '' // 어플에 두면 보안에 취약함
 
 export default function App() {
   const [city, setCity] = useState('Loading...')
