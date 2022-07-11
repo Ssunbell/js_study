@@ -3,11 +3,13 @@ import React, {useEffect, useState} from "react";
 import reactDom from "react-dom";
 import { View, Text, StyleSheet, ScrollView, Dimensions } from "react-native";
 
+const API_key = 'e5576b232d9e55067c99bc21e75f387d' // 어플에 두면 보안에 취약함
+
 export default function App() {
   const [city, setCity] = useState('Loading...')
-  const [location, setLocation] = useState()
+  const [days, setDays] = useState([])
   const [ok, setOk] = useState(true)
-  const ask = async() => {
+  const getWeather = async() => {
     const {granted} = await Location.requestForegroundPermissionsAsync()
     if (!granted){
       setOk(false)
@@ -15,9 +17,12 @@ export default function App() {
     const {coords:{latitude, longitude}} = await Location.getCurrentPositionAsync({accuracy: 5})
     const location = await Location.reverseGeocodeAsync({latitude, longitude}, {useGoogleMaps:false})
     setCity(location[0].city)
+    const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=alerts&appid=${API_key}`)
+    const json = await response.json()
+    console.log(json)
   }
   useEffect(() => {
-    ask()
+    getWeather()
   },[])
   return (
     <View style={styles.container}>
@@ -56,6 +61,7 @@ export default function App() {
 }
 
 const { width: ScreenWidth } = Dimensions.get("window");
+
 
 const styles = StyleSheet.create({
   container: {
