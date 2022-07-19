@@ -1,64 +1,62 @@
 import { StatusBar } from "expo-status-bar";
-import { useEffect, useState } from "react";
+import { startTransition, useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
-  TouchableHighlight,
-  TouchableWithoutFeedback,
-  Pressable,
   TextInput,
   ScrollView,
   Alert,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { theme } from "./color";
-import { AsyncStorage } from "@react-native-async-storage/async-storage";
-import { Fontisto } from '@expo/vector-icons'; 
+
 const STORAGE_KEY = "@toDos";
 
 export default function App() {
   const [working, setWorking] = useState(true);
-  const [text, setText] = useState("");
+  const [text, setText] = useState(""); // inputtext
   const [toDos, setToDos] = useState({});
-  useEffect(() => {
-    loadToDOs();
-  }, []);
   const travel = () => setWorking(false);
   const work = () => setWorking(true);
-  const onChangeText = (payload) => setText(payload);
+  const onChangeText = (payload) => setText(payload); // inputtext
   const saveToDos = async (toSave) => {
     await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
   };
-  const loadToDOs = async () => {
+  const loadToDos = async () => {
     const s = await AsyncStorage.getItem(STORAGE_KEY);
     setToDos(JSON.parse(s));
   };
+  useEffect(() => {
+    loadToDos();
+  }, []);
   const addToDo = async () => {
     if (text === "") {
       return;
     }
-    const newToDos = { ...toDos, [Date.now()]: { text, working } };
-    // const newToDos = Object.assign({}, toDos, {
-    //   [Date.now()]: { text, work: working },
-    // });
+    const newToDos = {
+      ...toDos,
+      [Date.now()]: { text: text, working: working },
+    };
     setToDos(newToDos);
     await saveToDos(newToDos);
     setText("");
   };
+  console.log(toDos);
   const deleteToDo = (key) => {
-    Alert.alert("Delet To Do", "Are you sure?", [
-      {text: "Cancel"},
-      {text: "I'm sure",
-        style: "destructive",
+    Alert.alert("Delete To Do?", "Are you sure?", [
+      { text: "Cancel" },
+      {
+        text: "I'm sure",
         onPress: async () => {
-        const newToDos = { ...toDos };
-        delete newToDos[key];
-        setToDos(newToDos);
-        saveToDos(newToDos);
-      }}
+          const newToDos = { ...toDos };
+          delete newToDos[key];
+          setToDos(newToDos);
+          await saveToDos(newToDos);
+        },
+      },
     ]);
-    return;
   };
   return (
     <View style={styles.container}>
@@ -86,11 +84,8 @@ export default function App() {
         onSubmitEditing={addToDo}
         onChangeText={onChangeText}
         returnKeyType="done"
-        // keyboardType="email-address"
-        // returnKeyType="send"
-        // secureTextEntry
         value={text}
-        placeholder={working ? "Add a To Do" : "Where do you want to go?"}
+        placeholder={working ? "Add a To-Do" : "Where do you want to go?"}
         style={styles.input}
       />
       <ScrollView>
@@ -99,7 +94,8 @@ export default function App() {
             <View style={styles.toDo} key={key}>
               <Text style={styles.toDoText}>{toDos[key].text}</Text>
               <TouchableOpacity onPress={() => deleteToDo(key)}>
-              <Fontisto name="trash" size={18} color={theme.grey} /></TouchableOpacity>
+                <Text>X</Text>
+              </TouchableOpacity>
             </View>
           ) : null
         )}
@@ -107,7 +103,6 @@ export default function App() {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -126,19 +121,21 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: "white",
     paddingVertical: 15,
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
     borderRadius: 30,
-    marginVertical: 20,
-    fontSize: 18,
+    marginTop: 20,
+    marginVertical: 10,
+    fontSize: 15,
   },
   toDo: {
     backgroundColor: theme.toDoBg,
-    marginBottom: 10,
-    paddingVertical: 10,
     paddingHorizontal: 20,
+    paddingVertical: 15,
+    marginBottom: 10,
+    marginVertical: 20,
+    marginHorizontal: 5,
     borderRadius: 15,
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "space-between",
   },
   toDoText: {
