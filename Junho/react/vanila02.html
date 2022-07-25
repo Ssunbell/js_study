@@ -21,11 +21,14 @@
 
         function App(){
 
-            const [counter,setCounter] = React.useState(0);
+            const [counter,setCounter] = React.useState(0); // init counter
             
             const onClick = () =>{
-                setCounter(counter+1)
+                // setCounter(counter+1) // counter - setCounter 은 state 로 연결 그리고 auto rerendering
+                setCounter((current) => current+1) // 이전값이 이미 저장되어있음.
             }
+            // console.log('rendered')
+            // console.log(counter)
 
             return(
             <div>
