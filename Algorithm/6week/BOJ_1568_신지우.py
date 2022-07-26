@@ -34,3 +34,5 @@ for i in range(len(distance)):
     if (i + 1) % len(house) == 0:
         result.append(distance_sum)
         distance_sum = 0
+
+print(min(result))
