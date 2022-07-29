@@ -14,7 +14,8 @@ import {
 } from "react-native";
 import { theme } from "./color";
 import { AsyncStorage } from "@react-native-async-storage/async-storage";
-import { Fontisto } from '@expo/vector-icons'; 
+import { Fontisto } from '@expo/vector-icons';
+
 const STORAGE_KEY = "@toDos";
 
 export default function App() {
@@ -48,15 +49,17 @@ export default function App() {
   };
   const deleteToDo = (key) => {
     Alert.alert("Delet To Do", "Are you sure?", [
-      {text: "Cancel"},
-      {text: "I'm sure",
+      { text: "Cancel" },
+      {
+        text: "I'm sure",
         style: "destructive",
         onPress: async () => {
-        const newToDos = { ...toDos };
-        delete newToDos[key];
-        setToDos(newToDos);
-        saveToDos(newToDos);
-      }}
+          const newToDos = { ...toDos };
+          delete newToDos[key];
+          setToDos(newToDos);
+          saveToDos(newToDos);
+        }
+      }
     ]);
     return;
   };
@@ -99,7 +102,7 @@ export default function App() {
             <View style={styles.toDo} key={key}>
               <Text style={styles.toDoText}>{toDos[key].text}</Text>
               <TouchableOpacity onPress={() => deleteToDo(key)}>
-              <Fontisto name="trash" size={18} color={theme.grey} /></TouchableOpacity>
+                <Fontisto name="trash" size={18} color={theme.grey} /></TouchableOpacity>
             </View>
           ) : null
         )}
