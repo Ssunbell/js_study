@@ -49,9 +49,9 @@ export default function App() {
           <View style={styles.width}>
             <Image
               style={styles.brewery_photo}
-              source={require('/Users/shinjiwoo/TIL/yosul/image/양조장_1.jpg')} />
+              source={require('/Users/shinjiwoo/js_study/Jiwoo/main/image/양조장_1.jpg')} />
             <View style={styles.brewery_info}>
-              {/* DB에서 정보 받을 것 */}
+              {/* DB에서 사진이랑 정보 받을 것 */}
               <Text>금품 양조장</Text>
               <Text>주종 : 막걸리</Text>
               <Text>평일 : 오전 10시 ~ 오후 6시</Text>
@@ -62,9 +62,9 @@ export default function App() {
           <View style={styles.width}>
             <Image
               style={styles.brewery_photo}
-              source={require('/Users/shinjiwoo/TIL/yosul/image/양조장_2.jpg')} />
+              source={require('/Users/shinjiwoo/js_study/Jiwoo/main/image/양조장_2.jpg')} />
             <View style={styles.brewery_info}>
-              {/* DB에서 정보 받을 것 */}
+              {/* DB에서 사진이랑 정보 받을 것 */}
               <Text>금품 양조장</Text>
               <Text>주종 : 막걸리</Text>
               <Text>평일 : 오전 10시 ~ 오후 6시</Text>
@@ -80,21 +80,21 @@ export default function App() {
           horizontal={true}>
           <View style={styles.width}>
             <Image
-              style={styles.beer}
-              source={require('/Users/shinjiwoo/TIL/yosul/image/술_1.jpg')} />
+              style={styles.beer_photo}
+              source={require('/Users/shinjiwoo/js_study/Jiwoo/main/image/술_1.jpg')} />
             <View style={styles.beer_info}>
               {/* DB에서 정보 받을 것 */}
               <Text>풍정사계</Text>
               <Text>주종 : 막걸리</Text>
               <Text>평일 : 오전 10시 ~ 오후 6시</Text>
               <Text>주말 : 오전 10시 ~ 오후 6시</Text>
-              <Text>위치</Text>
+              <Text>위치</Text> 
             </View>
           </View>
           <View style={styles.width}>
             <Image
-              style={styles.beer}
-              source={require('/Users/shinjiwoo/TIL/yosul/image/술_2.jpg')} />
+              style={styles.beer_photo}
+              source={require('/Users/shinjiwoo/js_study/Jiwoo/main/image/술_2.jpg')} />
             <View style={styles.beer_info}>
               {/* DB에서 정보 받을 것 */}
               <Text>풍정사계</Text>
@@ -130,11 +130,13 @@ const styles = StyleSheet.create({
   },
   width: {
     flexDirection: "row",
-    width: SCREEN_WIDTH
+    width: SCREEN_WIDTH,
+    paddingLeft: 10
   },
   brewery_photo: {
     height: 200,
     width: 200,
+    borderRadius: 10,
   },
   brewery_info: {
     marginLeft: 30,
@@ -150,6 +152,7 @@ const styles = StyleSheet.create({
   beer_photo: {
     height: 200,
     width: 200,
+    borderRadius: 10,
   },
   beer_info: {
     marginLeft: 30,
