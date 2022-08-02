@@ -5,6 +5,6 @@ import NewPostScreen from "./Screens/NewPostScreen";
 
 export default function App() {
   return (
-    <NewPostScreen />
+    <HomeScreen />
   );
 }
