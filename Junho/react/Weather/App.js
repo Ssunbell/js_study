@@ -1,5 +1,6 @@
+ 
 import { Location, StatusBar  } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Dimensions} from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions, AsyncStorageStatic } from 'react-native';
 
 const {heigt,width:Screen_Width} = Dimensions.get('window')
 const Screen_Height = Dimensions.get('window').height
