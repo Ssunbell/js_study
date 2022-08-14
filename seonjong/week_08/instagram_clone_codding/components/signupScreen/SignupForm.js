@@ -14,7 +14,7 @@ import * as Yup from "yup";
 import Validator from "email-validator";
 import firebase from "../../firebase";
 
-const db = firebase.firestore()
+const db = firebase.firestore();
 
 const SignupForm = ({ navigation }) => {
   const SignupFormSchema = Yup.object().shape({
@@ -25,12 +25,14 @@ const SignupForm = ({ navigation }) => {
       .min(8, "Your password has to have at least 8 characters"),
   });
 
+  // 프로필 사진 랜덤하게 설정해서 넣기
   const getRandomProfilePicture = async () => {
     const response = await fetch("https://randomuser.me/api");
     const data = await response.json();
     return data.results[0].picture.large;
   };
 
+  // 회원가입
   const onSignup = async (email, username, password) => {
     try {
       const authUser = await firebase
@@ -38,13 +40,15 @@ const SignupForm = ({ navigation }) => {
         .createUserWithEmailAndPassword(email, password);
       console.log("firebase User Created Successfully", email);
 
-      db.collection("users").add({
-        owner_uid: authUser.user.uid,
-        username: username,
-        email: authUser.user.email,
-        profile_picture: await getRandomProfilePicture(),
-      });
-      console.log('db에 잘 넣었다')
+      db.collection("users")
+        .doc(authUser.user.email)
+        .set({
+          owner_uid: authUser.user.uid,
+          username: username,
+          email: authUser.user.email,
+          profile_picture: await getRandomProfilePicture(),
+        });
+      console.log("db에 잘 넣었다");
     } catch (error) {
       Alert.alert(" My Lord ... ", error.message);
     }
