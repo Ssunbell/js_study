@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { Divider } from "react-native-elements";
 
 const postFooterIcons = [
   {
@@ -27,6 +28,7 @@ const Post = ({ post }) => {
   return (
     <View style={{ marginBottom: 30 }}>
       {/* 게시물을 반복문 돌리는 법 */}
+      <Divider width={1} orientation="vertical" />
       <PostHeader post={post} />
       <PostImage post={post} />
       <View style={{ marginHorizontal: 15, marginTop: 10 }}>

@@ -6,50 +6,28 @@ import {
   StyleSheet,
   Pressable,
   TouchableOpacity,
-  Alert,
 } from "react-native";
-import firebase from '../../firebase'
 
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Validator from "email-validator";
 
-const LoginForm = ({ navigation }) => {
-  const LoginFormSchema = Yup.object().shape({
+const SignupForm = ({navigation}) => {
+  const SignupFormSchema = Yup.object().shape({
     email: Yup.string().email().required("An email is required"),
+    username: Yup.string().required().min(2, 'A username is required'),
     password: Yup.string()
       .required()
       .min(8, "Your password has to have at least 8 characters"),
-  });
-
-  const onLogin = async (email, password) => {
-    try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
-      console.log("Firebase login Successful", email, password);
-    } catch (error) {
-      Alert.alert(
-        'My Lord...',
-        error.message + '\n\n .... What would you like to do next???',
-      [
-        {
-          text: 'OK',
-          onPress: () => console.log('OK'),
-          style: 'cancel'
-        },
-        {text: 'Sign UP', onPress: () => navigation.push('SignupScreen')}
-      ]
-      );
-    }
-  };
-
+  })
   return (
     <View style={styles.wrapper}>
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ email: "",username: '', password: "" }}
         onSubmit={(values) => {
-          onLogin(values.email, values.password);
+          console.log(values);
         }}
-        validationSchema={LoginFormSchema}
+        validationSchema={SignupFormSchema}
         validateOnMount={true}
       >
         {({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
@@ -65,14 +43,33 @@ const LoginForm = ({ navigation }) => {
             >
               <TextInput
                 placeholderTextColor="#444"
-                placeholder="Phone number, username or email"
+                placeholder="E-mail"
                 autoCapitalize="none"
                 keyboardType="email-address"
-                textContentType="emailAddress"
                 autoFocus={true}
                 onChangeText={handleChange("email")}
                 onBlur={handleBlur("email")}
                 value={values.email}
+              />
+            </View>
+            <View
+              style={{
+                ...styles.inputField,
+                borderColor:
+                  values.username.length < 1 || values.username.length >= 8
+                    ? "#ccc"
+                    : "red",
+              }}
+            >
+              <TextInput
+                placeholderTextColor="#444"
+                placeholder="Username"
+                autoCapitalize="none"
+                secureTextEntry={false}
+                textContentType="username"
+                onChangeText={handleChange("username")}
+                onBlur={handleBlur("username")}
+                value={values.username}
               />
             </View>
             <View
@@ -105,12 +102,12 @@ const LoginForm = ({ navigation }) => {
               onPress={handleSubmit}
               disabled={!isValid}
             >
-              <Text style={styles.buttonText}>Log In</Text>
+              <Text style={styles.buttonText}>Sign up</Text>
             </Pressable>
             <View style={styles.singupContainer}>
               <Text>Don't have an account?</Text>
-              <TouchableOpacity onPress={() => navigation.push("SignupScreen")}>
-                <Text style={{ color: "#6BB0F5" }}> Sign Up</Text>
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Text style={{ color: "#6BB0F5" }}> Log In</Text>
               </TouchableOpacity>
             </View>
           </>
@@ -152,4 +149,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginForm;
+export default SignupForm

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, Image, TextInput, Button } from "react-native";
 import * as Yup from "yup";
 import { Formik } from "formik";
+import { Divider } from "react-native-elements";
 import validUrl from 'valid-url'
 
 const PLACEHOLDER_IMG =
@@ -51,6 +52,7 @@ const FormikPostUploader = () => {
             />
             </View>
           </View>
+          <Divider width={0.2} orientation='vertical'/>
           <TextInput
               style={{color: 'white', fontSize: 18}}
               placeholder="Enter Image Url"
