@@ -4,14 +4,26 @@ import Header from '../components/home/Header';
 import Stories from '../components/home/Stories';
 import Post from '../components/home/Post'
 import { POSTS } from '../data/post';
+import { useEffect, useState } from 'react';
+import firebase from '../firebase'
 
-const HomeScreen = () => {
+const db = firebase.firestore()
+
+const HomeScreen = ({navigation}) => {
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    db.collectionGroup('posts')
+    .onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map(post => (
+        {id: post.id, ...post.data()})))
+    })
+  }, [])
   return (
     <SafeAreaView style={styles.container}>
-      <Header/>
-      {/* <Stories/> */}
+      <Header navigation={navigation}/>
       <ScrollView>
-        {POSTS.map((post, index) => (
+        {posts.map((post, index) => (
           <Post post={post} key={index}/>
         ))}
       </ScrollView>

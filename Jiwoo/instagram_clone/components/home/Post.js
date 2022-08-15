@@ -1,18 +1,46 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity, FlatList, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Divider } from 'react-native-elements';
 import { AntDesign, Feather, FontAwesome, SimpleLineIcons } from '@expo/vector-icons';
+import firebase from '../../firebase';
 
+const db = firebase.firestore()
 
 const Post = ({ post }) => {
+    const handleLike = post => {
+        const currentLikeStatus = !post.likes_py_users.includes(
+            firebase.auth().currentUser.email
+        )
+
+        db.collection('users')
+            .doc(post.owner_email)
+            .collection('posts')
+            .doc(post.id)
+            .update({
+                likes_py_users: currentLikeStatus
+                    ? firebase.firestore.FieldValue.arrayUnion(
+                        firebase.auth().currentUser.email
+                    )
+                    : firebase.firestore.FieldValue.arrayRemove(
+                        firebase.auth().currentUser.email
+                    ),
+            })
+            .then(() => {
+                console.log('Document successfully updated!')
+            })
+            .catch(error => {
+                console.log('Error updating document', error)
+            })
+    }
     return (
         <View style={{ marginBottom: 30 }}>
             <Divider width={2} orientation='vertical' />
             <PostHeader post={post} />
             <PostImage post={post} />
             <View style={{ marginHorizontal: 15, marginTop: 10 }}>
-                <PostFooter post={post} />
-                <Tag post={post} />
+                <PostFooter post={post} handleLike={handleLike} />
+                {/* <Tag post={post} /> */}
+                <Likes post={post} />
                 <Caption post={post} />
                 <CommentsSection post={post} />
                 <Comment post={post} />
@@ -43,27 +71,31 @@ const PostHeader = ({ post }) => (
 )
 
 const PostImage = ({ post }) => (
-    <View style={{ width: '100%', height: 450 }}>
-        <ScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={true}>
-            {post.imageUrl.map((imageUrl, index) => (
-                <View key={index}>
-                    <Image source={{ uri: imageUrl }} style={{ height: '100%', resizeMode: 'cover' }} />
-                </View>
-            ))}
-        </ScrollView >
+    <View style={{ width: "100%", height: 450 }}>
+        <Image
+            source={{ uri: post.imageUrl }}
+            style={{ height: "100%", resizeMode: "cover" }}
+        />
     </View>
-)
+);
 
-const PostFooter = ({ post }) => (
+
+const PostFooter = ({ post, handleLike }) => (
     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <View style={styles.lefeFooterIconsContainer}>
             {/* 하트 */}
-            <TouchableOpacity><AntDesign name="hearto" size={24} color="black" /></TouchableOpacity>
-            <TouchableOpacity><SimpleLineIcons name="bubble" size={24} color="black" /></TouchableOpacity>
-            <TouchableOpacity><FontAwesome name="bookmark-o" size={24} color="black" /></TouchableOpacity>
-            <TouchableOpacity><Feather name="share-2" size={24} color="black" /></TouchableOpacity>
+            <TouchableOpacity onPress={() => handleLike(post)}>
+                <AntDesign name="hearto" size={24} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <SimpleLineIcons name="bubble" size={24} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <FontAwesome name="bookmark-o" size={24} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <Feather name="share-2" size={24} color="black" />
+            </TouchableOpacity>
         </View>
         <View style={{ alignItems: 'flex-end', justifyContent: 'center', }}>
             <Text>{post.date}</Text>
@@ -71,20 +103,20 @@ const PostFooter = ({ post }) => (
     </View>
 )
 
-const Tag = ({ post }) => (
-    <View style={{ flexDirection: 'row', marginTop: 15 }}>
-        {post.tag.map((tag, index) => (
-            <View key={index}>
-                <Text style={{ color: 'black' }}>
-                    <Text style={{
-                        backgroundColor: "#c0e8e0",
-                    }}>
-                        {'#'}{tag}</Text>{'  '}
-                </Text>
-            </View>
-        ))}
-    </View >
-)
+// const Tag = ({ post }) => (
+//     <View style={{ flexDirection: 'row', marginTop: 15 }}>
+//         {post.tag.map((tag, index) => (
+//             <View key={index}>
+//                 <Text style={{ color: 'black' }}>
+//                     <Text style={{
+//                         backgroundColor: "#c0e8e0",
+//                     }}>
+//                         {'#'}{tag}</Text>{'  '}
+//                 </Text>
+//             </View>
+//         ))}
+//     </View >
+// )
 
 // 내용 어느정도 이상 넘어가면 펼치기로 하기!
 const Caption = ({ post }) => (
@@ -95,6 +127,14 @@ const Caption = ({ post }) => (
         </Text>
     </View>
 )
+
+const Likes = ({ post }) => (
+    <View style={{ flexDirection: "row", marginTop: 4 }}>
+        <Text style={{ color: "black", fontWeight: "600" }}>
+            {post.likes_py_users.length.toLocaleString("en")} likes
+        </Text>
+    </View>
+);
 
 const CommentsSection = ({ post }) => (
     <View style={{ marginTop: 5 }}>
