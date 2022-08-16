@@ -1,8 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity } from 'react-native';
 import { FontAwesome5, Feather, Octicons } from '@expo/vector-icons';
+import firebase from '../../firebase';
 
-const Header = () => {
+const handleSignout = async () => {
+  try {
+    await firebase.auth().signOut()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const Header = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {/* 인스타 로고 */}
@@ -18,12 +27,14 @@ const Header = () => {
 
       {/* 게시물 추가, 좋아요, 메시지 아이콘 */}
       <View style={styles.iconsContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.push('NewPostScreen')}>
           <View style={{ marginRight: 10 }}>
-          <Feather name="plus-circle" size={24} color="black" />
+            <Feather name="plus-circle" size={24} color="black" />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        
+        {/* 임시로 누르면 signup으로 넘어가보는거 해보기 */}
+        <TouchableOpacity onPress={handleSignout}>
           <View style={styles.unreadBadge}>
             <Text style={styles.unreadBadgeText}>11</Text>
           </View>
