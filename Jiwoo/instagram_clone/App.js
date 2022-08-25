@@ -6,6 +6,6 @@ import NewPostScreen from './screen/NewPostScreen'
 
 
 export default function App() {
-  return <AuthNavigation />
+  return <HomeScreen />
 }
 

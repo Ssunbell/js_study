@@ -27,7 +27,7 @@ const Header = ({ navigation }) => {
 
       {/* 게시물 추가, 좋아요, 메시지 아이콘 */}
       <View style={styles.iconsContainer}>
-        <TouchableOpacity onPress={() => navigation.push('NewPostScreen')}>
+        <TouchableOpacity>
           <View style={{ marginRight: 10 }}>
             <Feather name="plus-circle" size={24} color="black" />
           </View>
